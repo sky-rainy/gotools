@@ -26,14 +26,10 @@ type MySql struct {
 	conn        *sql.DB // 数据库连接
 }
 
-type MysqlCfg struct {
-	Source, Driver string
-}
-
 // 初始化连接池
-func init() {
+func New(source string, driver string) {
 	MySql := MySql{}
-	db, err := sql.Open(MySql.source, MySql.driver)
+	db, err := sql.Open(source, source)
 	db.SetMaxOpenConns(2000)             // 最大链接
 	db.SetMaxIdleConns(1000)             // 空闲连接，也就是连接池里面的数量
 	db.SetConnMaxLifetime(7 * time.Hour) // 设置最大生成周期是7个小时
