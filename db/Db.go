@@ -1,4 +1,4 @@
-package Config
+package Pvdb
 
 import (
 	"database/sql"
@@ -29,7 +29,7 @@ type MySql struct {
 // 初始化连接池
 func New(source string, driver string) {
 	MySql := MySql{}
-	db, err := sql.Open(source, source)
+	db, err := sql.Open(source, driver)
 	db.SetMaxOpenConns(2000)             // 最大链接
 	db.SetMaxIdleConns(1000)             // 空闲连接，也就是连接池里面的数量
 	db.SetConnMaxLifetime(7 * time.Hour) // 设置最大生成周期是7个小时
