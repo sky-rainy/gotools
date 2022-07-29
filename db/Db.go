@@ -312,6 +312,6 @@ func (MySql MySql) QueryRow() map[string]string {
 */
 func (MySql MySql) checkErr(err error) {
 	if err != nil {
-		log.Fatal("错误：", err)
+		log.Println("Mysql错误：", err)
 	}
 }
